@@ -1,10 +1,20 @@
 
 const routes = [
   {
-    path: '/',
+
+    path: '/', // rota raiz (root)
+    component: () => import('layouts/LoginLayout.vue'),
+    children: [
+      { path: '', name: 'login', component: () => import('pages/Login.vue') },
+      { path: '/esqueci-minha-senha', name: 'esqueciSenha', component: () => import('pages/EsqueciSenha.vue') }
+    ]
+  },
+
+  {
+    path: '/auth',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') }
+      { path: '', name: 'home', component: () => import('pages/Index.vue') }
     ]
   },
 
